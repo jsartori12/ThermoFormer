@@ -65,35 +65,7 @@ class ThermoTranslator(nn.Module):
 
     @torch.no_grad()
     def generate(self, src_ids, max_new_tokens=512, temperature=1.0):
-        self.eval()
-        device = src_ids.device
-    
-        
-        src_mask = self._pad_mask(src_ids, self.cfg.pad_token_id)
-        enc_out  = self.encode(src_ids, src_mask)
-    
-        
-        generated = torch.tensor([[self.cfg.bos_token_id]],
-                                  dtype=torch.long, device=device)
-    
-        for _ in range(max_new_tokens):
-            tgt_mask = self._causal_mask(generated.size(1), device)
-            logits   = self.decode(generated, enc_out,
-                                   tgt_mask=tgt_mask,
-                                   src_mask=src_mask)
-    
-            # get only last generated token
-            next_logits = logits[:, -1, :] / temperature
-            
-            #### Implementar opcao para usar topK no lugar de argmax
-            next_token  = next_logits.argmax(dim=-1, keepdim=True)
-    
-            generated = torch.cat([generated, next_token], dim=1)
-    
-            if next_token.item() == self.cfg.eos_token_id:
-                break
-    
-        return generated[0].tolist()
+        pass
     
     
 # cfg   = ModelConfig()

@@ -20,7 +20,7 @@ class ModelConfig:
     d_ff          : int   = 512
     n_enc_layers  : int   = 4
     n_dec_layers  : int   = 4
-    #max_seq_len   : int   = 512
+    max_seq_len   : int   = 512
     dropout       : float = 0.1
 
 @dataclass
@@ -38,3 +38,13 @@ class TrainConfig:
     checkpoint_dir : str   = "checkpoints/"
     device         : str   = "cuda"
     seed           : int   = 42
+
+@dataclass
+class Config:
+    model: ModelConfig = None
+    train: TrainConfig = None
+
+    def __post_init__(self):
+        if self.model is None: self.model = ModelConfig()
+        if self.train is None: self.train = TrainConfig()
+
