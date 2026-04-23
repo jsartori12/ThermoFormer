@@ -27,7 +27,7 @@ Mesophilic–thermophilic pairs were built using **MMseqs2** via cross-search be
 ```
 sequence identity:  30–90%   (homologs from the same protein family)
 coverage:           ≥ 80%    (representative alignment)
-delta Tm:           > 5°C    (genuine stability difference)
+delta Tm:           > 10°C    (genuine stability difference)
 ```
 
 The final dataset contains ~463k sequence pairs.
