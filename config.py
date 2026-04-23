@@ -17,7 +17,7 @@ class ModelConfig:
     eos_token_id  : int   = 2
     d_model       : int   = 256
     n_heads       : int   = 8
-    d_ff          : int   = 512
+    d_ff          : int   = 256
     n_enc_layers  : int   = 4
     n_dec_layers  : int   = 4
     max_seq_len   : int   = 512
